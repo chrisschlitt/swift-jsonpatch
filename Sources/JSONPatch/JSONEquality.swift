@@ -49,6 +49,12 @@ extension NSNumber: JSONEquatable {
     }
 }
 
+extension Bool: JSONEquatable {
+    func isJSONEquals(to element: JSONElement) -> Bool {
+        return (self as NSNumber).isJSONEquals(to: element)
+    }
+}
+
 extension NSString: JSONEquatable {
     func isJSONEquals(to element: JSONElement) -> Bool {
         guard case let .string(str) = element else {
